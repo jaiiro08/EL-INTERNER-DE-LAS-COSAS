@@ -1,0 +1,55 @@
+const int led1 = 9;
+const int led2 = 10;
+const int led3 = 11;
+const int led4 = 12;
+
+const int ldrPin = A0;
+
+void setup() {
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  int valorLDR = analogRead(ldrPin);
+  
+  Serial.print("Lectura LDR: ");
+  Serial.println(valorLDR);
+
+  if (valorLDR < 200) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+    digitalWrite(led3, HIGH);
+    digitalWrite(led4, HIGH);
+  } 
+  else if (valorLDR < 400) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+    digitalWrite(led3, HIGH);
+    digitalWrite(led4, LOW);
+  } 
+  else if (valorLDR < 600) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+    digitalWrite(led3, LOW);
+    digitalWrite(led4, LOW);
+  } 
+  else if (valorLDR < 800) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+    digitalWrite(led4, LOW);
+  } 
+  else {
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+    digitalWrite(led4, LOW);
+  }
+
+  delay(100);
+}
